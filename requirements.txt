@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+sqlalchemy
+pyjwt
+passlib
+bcrypt
+pytest
+requests
+databases[postgresql]==0.2.6
+boto3
+python-multipart

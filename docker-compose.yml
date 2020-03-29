@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  web:
+    build: .
+    command: uvicorn main:app --reload --workers 1 --host 0.0.0.0 --port 8000
+    volumes:
+      - ./api/:/usr/src/api/
+    ports:
+      - 8002:8000
+    environment:
+      - DATABASE_URL=postgresql://showlists:showlists@db/showlists
+  db:
+    image: postgres:12.1-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=showlists
+      - POSTGRES_PASSWORD=showlists
+      - POSTGRES_DB=showlists
+    
+volumes:
+  postgres_data:
