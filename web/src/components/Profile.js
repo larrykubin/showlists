@@ -16,6 +16,7 @@ class Profile extends React.Component {
             artists: [],
             cities: [],
             photos: [],
+            num_attachments: 0,
             username: this.props.match.params.username
         }
     }
@@ -38,7 +39,8 @@ class Profile extends React.Component {
                     shows: response.data.shows,
                     cities: cities,
                     venues: venues,
-                    artists: artists
+                    artists: artists,
+                    num_attachments: response.data.num_attachments
                 })
           })
           .catch(error => console.error('timeout exceeded'))
@@ -96,7 +98,7 @@ class Profile extends React.Component {
 
                 <Statistic>
                     <Statistic.Value>
-                        {this.state.photos.length}
+                        {this.state.num_attachments}
                     </Statistic.Value>
                     <Statistic.Label>Photos</Statistic.Label>
                 </Statistic>
@@ -126,7 +128,7 @@ class Profile extends React.Component {
                     {this.state.shows.map((show) => 
                     <Table.Row>
                         <Table.Cell collapsing>
-                            {show.date}
+                            <Link to={`/shows/${show.id}`}>{show.date}</Link>
                         </Table.Cell>
                         <Table.Cell>{show.artist}</Table.Cell>
                         <Table.Cell>

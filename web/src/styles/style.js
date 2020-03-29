@@ -5,6 +5,13 @@ const style = {
     norecords: {
       padding: '40px',
       textAlign: 'center'
+    },
+    gallery: {
+      margin: '20px'
+    },
+    image: {
+       height: '250px',
+       overflow: 'hidden'
     }
 }
 

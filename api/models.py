@@ -54,6 +54,9 @@ class Attachment(BaseModel):
     active = Column(Boolean, default=False)
     creator_id = Column(Integer, ForeignKey('users.id'))
 
+    #users = relationship("User", secondary="user_shows")
+    shows = relationship("Show", secondary="show_attachments")
+
 class ShowAttachment(BaseModel):
     __tablename__ = "show_attachments"
 

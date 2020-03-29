@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import Attach from './components/Attach'
+import AttachmentForm from './components/AttachmentForm'
 import Login from './components/Login'
 import Profile from './components/Profile'
 import People from './components/People'
@@ -64,7 +64,7 @@ class App extends React.Component {
               <Route path='/users/:username' render={(props) => <Profile {...props} callback={this.callback} />} />
               <Route path='/shows/form' component={ShowForm} />
               <Route path='/shows/:id/edit' component={ShowForm} />
-              <Route path='/shows/:id/attach' component={Attach} />
+              <Route path='/shows/:id/attach' component={AttachmentForm} />
               <Route exact path='/shows/:id' component={ShowDetail} />
               <Route path='/register' component={Register} />
               <Route path='/login' render={(props) => <Login {...props} callback={this.callback} />} />

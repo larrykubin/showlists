@@ -1,7 +1,7 @@
 import schemas, sqlalchemy
 from fastapi import APIRouter, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer
-from models import Show, User
+from models import Show, User, Attachment
 from db import db
 from .auth import get_current_user, get_current_active_user
 from pydantic import BaseModel
@@ -38,6 +38,7 @@ async def profile(username, current_user: str = Depends(get_current_active_user)
     try:
         user = db.query(User).filter(User.username==username).one()
         print(user)
+        num_attachments = db.query(Attachment).filter(Attachment.creator_id==user.id).count()
     except sqlalchemy.orm.exc.NoResultFound:
         return {
             "code": "error",
@@ -56,6 +57,7 @@ async def profile(username, current_user: str = Depends(get_current_active_user)
     return {
         "shows": shows,
         "num_shows": len(shows),
+        "num_attachments": num_attachments,
         "user": user
     }
 

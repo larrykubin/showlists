@@ -1,6 +1,6 @@
 import sqlalchemy
 from fastapi import APIRouter, Depends
-from models import Show
+from models import Attachment, Show, ShowAttachment, User
 from db import db
 from .auth import get_current_active_user, get_current_user
 from pydantic import BaseModel
@@ -48,10 +48,16 @@ def read(id: int):
     """
     returns a single show by id
     """
+    print("reading one")
     show = db.query(Show).filter(Show.id==id).one()
+    user = db.query(User).filter(User.id==show.creator_id).one()
+    attachments = db.query(Attachment).join(Show, Attachment.shows).filter(Show.id==id).all()
 
     return {
-        "show": show
+        "user_id": user.id,
+        "username": user.username,
+        "show": show,
+        "attachments": attachments
     }
 
 @router.put("/{show_id}")

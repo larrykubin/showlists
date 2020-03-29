@@ -77,7 +77,7 @@ uppy.on('complete', (result) => {
   })
 })
 
-class Attach extends React.Component {
+class AttachmentForm extends React.Component {
     constructor(props) {
         super(props)
 
@@ -99,4 +99,4 @@ class Attach extends React.Component {
     }
 }
 
-export default Attach
+export default AttachmentForm
