@@ -4,7 +4,7 @@ import AttachmentForm from './components/AttachmentForm'
 import Login from './components/Login'
 import Profile from './components/Profile'
 import People from './components/People'
-import PhotoGrid from './components/PhotoGrid'
+import ActivityFeed from './components/ActivityFeed'
 import Register from './components/Register'
 import ShowDetail from './components/ShowDetail'
 import ShowForm from './components/ShowForm'
@@ -59,7 +59,7 @@ class App extends React.Component {
 
         <Container style={{ marginTop: '7em' }}>
             <Switch>
-              <Route exact path='/' component={PhotoGrid} />
+              <Route exact path='/' component={ActivityFeed} />
               <Route exact path='/users' component={People} />
               <Route path='/users/:username' render={(props) => <Profile {...props} callback={this.callback} />} />
               <Route path='/shows/form' component={ShowForm} />

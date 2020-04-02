@@ -14,7 +14,8 @@ class User(BaseModel):
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String)
     is_active = Column(Boolean, default=True)
-
+    created = Column(DateTime, default=datetime.datetime.utcnow)
+    
     shows = relationship("Show", secondary="user_shows")
 
 
@@ -32,6 +33,7 @@ class Show(BaseModel):
 
     users = relationship("User", secondary="user_shows")
     attachments = relationship("Attachment", secondary="show_attachments")
+    user = relationship("User", lazy="joined")
 
 class UserShow(BaseModel):
     __tablename__ = 'user_shows'
@@ -51,8 +53,8 @@ class Attachment(BaseModel):
     filename = Column(String)
     url = Column(String)
     notes = Column(String)
-    active = Column(Boolean, default=False)
     creator_id = Column(Integer, ForeignKey('users.id'))
+    created = Column(DateTime, default=datetime.datetime.utcnow)
 
     #users = relationship("User", secondary="user_shows")
     shows = relationship("Show", secondary="show_attachments")

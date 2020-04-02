@@ -114,10 +114,14 @@ class ShowDetail extends React.Component {
                         </Card.Content>
                     </Card>
                 })}
-                            </Card.Group>
+                            
+                </Card.Group>
 
             }
-</Container>
+            </Container>
+
+            {!this.state.attachments.length && 'No attachments have been added for this show.'}
+
         </div>
     }
 }

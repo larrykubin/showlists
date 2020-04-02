@@ -13,3 +13,6 @@ class Show(BaseModel):
 class Profile(BaseModel):
     user: User
     shows: List[Show]
+
+class Response(BaseModel):
+    code: str

@@ -10,6 +10,9 @@ services:
       - 8002:8000
     environment:
       - DATABASE_URL=postgresql://showlists:showlists@db/showlists
+      - AWS_ACCESS_KEY_ID=
+      - AWS_SECRET_ACCESS_KEY=
+      - AWS_DEFAULT_REGION=us-west-2
   db:
     image: postgres:12.1-alpine
     volumes:

@@ -39,7 +39,8 @@ class ShowForm extends React.Component {
                     venue: show.venue,
                     city: show.city,
                     date: show.date,
-                    festival: show.festival
+                    festival: show.festival,
+                    notes: show.notes
                 })
             })
          }
